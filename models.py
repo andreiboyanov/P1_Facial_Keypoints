@@ -49,7 +49,6 @@ class Net(nn.Module):
         # Convolution2d4          256                                       (1, 1)
         # Table II
         # FILTER DETAILS OF CONVOLUTION2D LAYERS
-        
 
         # 1 input image channel (grayscale), 32 output channels/feature maps, 5x5 square convolution kernel
         self.convolution_1 = nn.Conv2d(1, 32, 4)
@@ -70,10 +69,6 @@ class Net(nn.Module):
         self.dense_3 = nn.Linear(1000, 136)
         
     def forward(self, x):
-        ## TODO: Define the feedforward behavior of this model
-        ## x is the input image and, as an example, here you may choose to include a pool/conv step:
-        ## x = self.pool(F.relu(self.conv1(x)))
-        
         x = self.convolution_1(x)
         x = self.activation_1_5(x)
         x = self.pooling(x)
