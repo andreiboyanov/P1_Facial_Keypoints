@@ -1,5 +1,3 @@
-## TODO: define the convolutional neural network architecture
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -16,31 +14,31 @@ class Net(nn.Module):
         # (shapes are changed according our input image size [224, 224])
         #
         #Layer Number Layer Name                                    Layer Shape
-        # 1                                 Input1                                             (1, 224, 224)
-        # 2                                 Convolution2d1                          (32, 221, 221)
-        # 3                                 Activation1                                  (32, 221, 221)
-        # 4                                 Maxpooling2d1                         (32, 110, 110)
-        # 5                                 Dropout1                                     (32, 110, 110)
-        # 6                                 Convolution2d2                        (64, 108, 108)
-        # 7                                 Activation2                                (64, 108, 108)
-        # 8                                 Maxpooling2d2                       (64, 54, 54)
-        # 9                                 Dropout2                                  (64, 54, 54)
-        # 10                                 Convolution2d3                    (128, 53, 53)
-        # 11                                 Activation3                             (128, 53, 53)
-        # 12                                 Maxpooling2d3                    (128, 26, 26)
-        # 13                                 Dropout3                                (128, 26, 26)
-        # 14                                 Convolution2d4                   (256, 26, 26)
-        # 15                                 Activation4                           (256, 26, 26)
-        # 16                                 Maxpooling2d4                   (256, 13, 13)
-        # 17                                 Dropout4                               (256, 13, 13)
-        # 18                                 Flatten1                                  (43264)
-        # 19                                 Dense1                                    (43264)
-        # 20                                 Activation5                          (43264)
-        # 21                                 Dropout5                              (43264)
-        # 22                                 Dense2                                 (1000)
-        # 23                                 Activation6                         (1000)
-        # 24                                 Dropout6                            (1000)
-        # 25                                 Dense3                                (2)
+        # 1                                 Input1                    (1, 224, 224)
+        # 2                                 Convolution2d1            (32, 221, 221)
+        # 3                                 Activation1               (32, 221, 221)
+        # 4                                 Maxpooling2d1             (32, 110, 110)
+        # 5                                 Dropout1                  (32, 110, 110)
+        # 6                                 Convolution2d2            (64, 108, 108)
+        # 7                                 Activation2               (64, 108, 108)
+        # 8                                 Maxpooling2d2             (64, 54, 54)
+        # 9                                 Dropout2                  (64, 54, 54)
+        # 10                                Convolution2d3            (128, 53, 53)
+        # 11                                Activation3               (128, 53, 53)
+        # 12                                Maxpooling2d3             (128, 26, 26)
+        # 13                                Dropout3                  (128, 26, 26)
+        # 14                                Convolution2d4            (256, 26, 26)
+        # 15                                Activation4               (256, 26, 26)
+        # 16                                Maxpooling2d4             (256, 13, 13)
+        # 17                                Dropout4                  (256, 13, 13)
+        # 18                                Flatten1                  (43264)
+        # 19                                Dense1                    (43264)
+        # 20                                Activation5               (43264)
+        # 21                                Dropout5                  (43264)
+        # 22                                Dense2                    (1000)
+        # 23                                Activation6               (1000)
+        # 24                                Dropout6                  (1000)
+        # 25                                Dense3                    (136)
         # Table I
         # NAIMISHNET LAYER-WISE ARCHITECTURE
         #
@@ -52,12 +50,7 @@ class Net(nn.Module):
         # Table II
         # FILTER DETAILS OF CONVOLUTION2D LAYERS
         
-        ## TODO: Define all the layers of this CNN, the only requirements are:
-        ## 1. This network takes in a square (same width and height), grayscale image as input
-        ## 2. It ends with a linear layer that represents the keypoints
-        ## it's suggested that you make this last layer output 136 values, 2 for each of the 68 keypoint (x, y) pairs
-        
-        # As an example, you've been given a convolutional layer, which you may (but don't have to) change:
+
         # 1 input image channel (grayscale), 32 output channels/feature maps, 5x5 square convolution kernel
         self.convolution_1 = nn.Conv2d(1, 32, 4)
         self.convolution_2 = nn.Conv2d(32, 64, 3)
