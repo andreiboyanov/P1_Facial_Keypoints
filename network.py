@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from models import Net
 
 
-use_gpu = False
+use_gpu = True
 if use_gpu:
     device = torch.device("cuda")
     tensor_type = torch.cuda.FloatTensor
@@ -139,11 +139,15 @@ def visualize_output(test_images, test_outputs, gt_pts=None, batch_size=10):
             index = 2 * j + i
             # un-transform the image data
             image = test_images[index].data   # get the image from it's Variable wrapper
+            if use_gpu:
+                image = image.cpu()
             image = image.numpy()   # convert to numpy array from a Tensor
             image = np.transpose(image, (1, 2, 0))   # transpose to go from torch to numpy image
 
             # un-transform the predicted key_pts data
             predicted_key_pts = test_outputs[index].data
+            if use_gpu:
+                predicted_key_pts = predicted_key_pts.cpu()
             predicted_key_pts = predicted_key_pts.numpy()
             # undo normalization of keypoints  
             predicted_key_pts = predicted_key_pts*50.0+100
@@ -219,7 +223,7 @@ def train_net(n_epochs):
 
 
 # train your network
-n_epochs = 2
+n_epochs = 200
 train_net(n_epochs)
 
 # get a sample of test data again
@@ -243,7 +247,8 @@ torch.save(net.state_dict(), model_dir + model_name)
 # Get the weights in the first conv layer, "conv1"
 # if necessary, change this to reflect the name of your first conv layer
 weights1 = net.convolution_1.weight.data
-
+if use_gpu:
+    weights1 = weights1.cpu()
 w = weights1.numpy()
 
 filter_index = 0
