@@ -172,7 +172,7 @@ visualize_output(test_images, test_outputs, gt_pts)
 
 import torch.optim as optim
 
-criterion = nn.SmoothL1Loss()
+criterion = nn.SmoothL1Loss(reduction='sum')
 optimizer = optim.Adam(net.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-8)
 
 

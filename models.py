@@ -55,8 +55,8 @@ class Net(nn.Module):
         self.convolution_2 = nn.Conv2d(32, 64, 3)
         self.convolution_3 = nn.Conv2d(64, 128, 2)
         self.convolution_4 = nn.Conv2d(128, 256, 1)
-        self.activation_1_5 = F.elu
-        self.activation_6 = F.relu
+        self.activation_1_5 = nn.ReLU()
+        self.activation_6 = nn.ReLU()
         self.pooling = nn.MaxPool2d(2, 2)
         self.drop_out_1 = nn.Dropout(p=0.1)
         self.drop_out_2 = nn.Dropout(p=0.2)
