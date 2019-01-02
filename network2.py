@@ -165,7 +165,7 @@ from torchvision import transforms, utils
 # the dataset we created in Notebook 1 is copied in the helper file `data_load.py`
 from data_load import FacialKeypointsDataset
 # the transforms we defined in Notebook 1 are in the helper file `data_load.py`
-from data_load import Rescale, RandomCrop, Normalize, Rotate, ToTensor
+from data_load import Rescale, RandomCrop, Normalize, ToTensor
 
 
 ## TODO: define the data_transform using transforms.Compose([all tx's, . , .])
@@ -184,8 +184,8 @@ assert(data_transform is not None), 'Define a data_transform'
 
 
 # create the transformed dataset
-transformed_dataset = FacialKeypointsDataset(csv_file=r'D:\Devroot\udacity_cv\project_1\data\training_frames_keypoints.csv',
-                                             root_dir=r'D:\Devroot\udacity_cv\project_1\data\training',
+transformed_dataset = FacialKeypointsDataset(csv_file=r'\data\training_frames_keypoints.csv',
+                                             root_dir=r'\data\training',
                                              transform=data_transform)
 
 
@@ -235,8 +235,8 @@ train_loader = DataLoader(transformed_dataset,
 # AND apply the data_transform you defined above
 
 # create the test dataset
-test_dataset = FacialKeypointsDataset(csv_file=r'D:\Devroot\udacity_cv\project_1\data\test_frames_keypoints.csv',
-                                             root_dir=r'D:\Devroot\udacity_cv\project_1\data\test',
+test_dataset = FacialKeypointsDataset(csv_file=r'\data\test_frames_keypoints.csv',
+                                             root_dir=r'\data\test',
                                              transform=data_transform)
 
 
@@ -468,7 +468,7 @@ def train_net(n_epochs):
 # train your network
 # from workspace_utils import active_session
 
-n_epochs = 200 # start small, and increase when you've decided on your model structure and hyperparams
+n_epochs = 20 # start small, and increase when you've decided on your model structure and hyperparams
 
 # this is a Workspaces-specific context manager to keep the connection
 # alive while training your model, not part of pytorch
