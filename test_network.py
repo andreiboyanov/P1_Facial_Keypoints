@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from models import Net
 
 
-use_gpu = True
+use_gpu = False
 if use_gpu:
     device = torch.device("cuda")
     tensor_type = torch.cuda.FloatTensor
