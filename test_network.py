@@ -23,7 +23,7 @@ print(net)
 
 
 model_dir = 'saved_models/'
-model_name = 'keypoints_model_temp.pt'
+model_name = 'keypoints_model_200_epochs.pt'
 net.load_state_dict(torch.load(model_dir + model_name))
 
 
@@ -127,7 +127,6 @@ def visualize_output(test_images, test_outputs, gt_pts=None, batch_size=10):
                 ground_truth_pts = gt_pts[index]         
                 ground_truth_pts = ground_truth_pts * 50.0 + 100
 
-            # call show_all_keypoints
             ax[j, i].axis("off")
             show_all_keypoints(ax[j][i], np.squeeze(image), predicted_key_pts, ground_truth_pts)
 
